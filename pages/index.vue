@@ -2,6 +2,11 @@
 const route = useRoute();
 
 const count = ref<number>(1);
+
+
+definePageMeta({
+	layout: "default"
+});
 </script>
 
 <template>
@@ -9,6 +14,7 @@ const count = ref<number>(1);
 		<h1>Nuxt Routing set up successfully!</h1>
 		<p>Current route: {{ route.path }}</p>
 		<span>{{ count }}</span>
-		<a href="https://nuxt.com/docs/getting-started/routing" target="_blank">Learn more about Nuxt Routing</a>
+		<button type="button" @click="count = count + 1">click</button>
+
 	</div>
 </template>
