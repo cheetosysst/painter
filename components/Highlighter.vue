@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getHighlighter, bundledLanguagesBase, bundledThemes } from 'shikiji';
+import domtoimage from "dom-to-image";
 
 const props = defineProps<{
 	code: string;
@@ -32,6 +33,39 @@ function copyRichText(payload: Event) {
 
 	navigator.clipboard.write(data);
 }
+function getImage() {
+}
+function copyImage() {
+	const element = document.querySelector("div#codeResult > .shiki")!;
+	return domtoimage.toBlob(element).then((rawData) => {
+		const type = "image/png";
+		const blob = new Blob([rawData], { type });
+		const data = [new ClipboardItem({ [type]: blob })];
+
+		navigator.clipboard.write(data);
+	}).catch(error => console.log(error));
+}
+
+function saveImage() {
+	const element = document.querySelector("div#codeResult > .shiki")!;
+	return domtoimage.toBlob(element).then((rawData) => {
+		const type = "image/png";
+		const blob = new Blob([rawData], { type });
+		// const file = new File([blob], `painter-${new Date().toISOString()}.png`, { type });
+
+		const blobURL = URL.createObjectURL(blob);
+
+		const download = document.createElement("a");
+		download.href = blobURL;
+		download.download = `painter-${new Date().toISOString()}.png`;
+
+		download.click();
+
+		URL.revokeObjectURL(blobURL);
+
+	}).catch(error => console.log(error));
+
+}
 </script>
 
 <script lang="ts">
@@ -53,8 +87,8 @@ function copyRichText(payload: Event) {
 					</option>
 				</select>
 				<button class="btn btn-primary" v-on:click="copyRichText">Copy Rich Text</button>
-				<button class="btn btn-info">Copy Image</button>
-				<button class="btn btn-warning">Save Image</button>
+				<button class="btn btn-info" v-on:click="copyImage">Copy Image</button>
+				<button class="btn btn-warning" v-on:click="saveImage">Save Image</button>
 			</div>
 			<div class="" id="codeResult" v-html="renderedCode" />
 		</div>

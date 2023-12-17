@@ -13,6 +13,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
     "@nuxt/devtools": "latest",
+    "@types/dom-to-image": "^2.6.7",
     "autoprefixer": "^10.4.16",
     "daisyui": "^4.4.20",
     "nuxt": "^3.8.2",
@@ -23,6 +24,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "dom-to-image": "^2.6.0",
     "lucide-vue-next": "^0.298.0"
   }
 }
