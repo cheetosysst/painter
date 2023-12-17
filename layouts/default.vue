@@ -6,9 +6,9 @@ import { Menu } from "lucide-vue-next"
 <template>
 	<div class="drawer">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
-		<div class="drawer-content min-h-[100dvh]">
+		<div class="drawer-content min-h-[100dvh] h-fit flex flex-col">
 			<!-- navbar -->
-			<div class="navbar bg-base-100">
+			<div class="navbar h-[6dvh] bg-base-100">
 				<div class="flex-none">
 					<label for="my-drawer" class="btn btn-square btn-ghost drawer-button">
 						<Menu />

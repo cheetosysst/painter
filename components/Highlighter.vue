@@ -34,15 +34,15 @@ function themeSelect() {
 </script>
 
 <template>
-	<div class="card card-compact bg-base-200 shadow-xl">
+	<div class="card card-compact bg-base-200 shadow-sm">
 		<div class="card-body">
 			<div class="flex gap-4">
-				<select class="select select-bordered max-w-xs w-full" v-model="selectedTheme" v-on:change="themeSelect">
+				<select class="select select-bordered w-48" v-model="selectedTheme" v-on:change="themeSelect">
 					<option v-for="(theme, idx) in availableThemes">
 						{{ theme }}
 					</option>
 				</select>
-				<select class="select select-bordered max-w-xs w-full" v-model="selectedLang" v-on:change="themeSelect">
+				<select class="select select-bordered w-48" v-model="selectedLang" v-on:change="themeSelect">
 					<option v-for="(lang, idx) in availableLanguages">
 						{{ lang }}
 					</option>

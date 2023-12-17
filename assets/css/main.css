@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .shiki {
-	padding: 1rem;
+	padding: 1.5rem;
+	white-space: pre-wrap;
+	width: fit-content;
 }
