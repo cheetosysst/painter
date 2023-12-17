@@ -1,5 +1,12 @@
 <script setup lang="ts">
 
+useSeoMeta({
+	title: 'Painter - code highlighting powered by Shikiji',
+	ogTitle: 'Painter - code highlighting powered by Shikiji',
+	description: 'Copy/Save code in your favourite theme, powered by shikiji !',
+	ogDescription: 'Copy/Save code in your favourite theme, powered by shikiji !'
+});
+
 const codeContent = ref<string>("");
 
 function handleTab(payload: KeyboardEvent) {

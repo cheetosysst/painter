@@ -74,18 +74,22 @@ function saveImage() {
 	<div class="card card-compact bg-base-200 shadow-sm">
 		<div class="card-body">
 			<div class="flex gap-4 flex-wrap items-center">
-				<select class="select select-bordered w-40" v-model="selectedTheme">
+
+				<label for="selectTheme hidden">select theme</label>
+				<select id="selectTheme" class="select select-bordered w-40" v-model="selectedTheme">
 					<option v-for="(theme, idx) in availableThemes">
 						{{ theme }}
 					</option>
 				</select>
-				<select class="select select-bordered w-40" v-model="selectedLang">
+
+				<label for="selectLang hidden">select language</label>
+				<select id="selectLang" class="select select-bordered w-40" v-model="selectedLang">
 					<option v-for="(lang, idx) in availableLanguages">
 						{{ lang }}
 					</option>
 				</select>
-				<div class="flex gap-4 flex-wrap">
 
+				<div class="flex gap-4 flex-wrap">
 					<button class="btn transition-all btn-primary" v-on:click="copyRichText">Copy
 						Rich Text</button>
 					<button class="btn transition-all btn-info" v-on:click="copyImage">Copy

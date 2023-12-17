@@ -1,6 +1,24 @@
 <script setup lang="ts">
 import { Menu, ChevronDown } from "lucide-vue-next";
 
+useHead({
+	htmlAttrs: {
+		lang: "zh-TW"
+	}
+});
+
+useSeoMeta({
+	colorScheme: "light dark",
+	applicationName: "Painter",
+	author: "Chen",
+	robots: "index, follow",
+	googlebotNews: "noindex",
+
+	ogType: "website",
+	ogDeterminer: "the",
+	ogSiteName: "Painter"
+});
+
 const themes = [
 	"light",
 	"dark",
@@ -80,8 +98,8 @@ const themes = [
 		<div class="drawer-side">
 			<label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
 			<ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-				<li><a>Sidebar Item 1</a></li>
-				<li><a>Sidebar Item 2</a></li>
+				<li><a href="https://github.com/cheetosysst/painter">Github</a></li>
+				<li><a href="/about">About</a></li>
 
 			</ul>
 		</div>
