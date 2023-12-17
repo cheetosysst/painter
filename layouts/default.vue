@@ -6,7 +6,7 @@ import { Menu } from "lucide-vue-next"
 <template>
 	<div class="drawer">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
-		<div class="drawer-content">
+		<div class="drawer-content min-h-[100dvh]">
 			<!-- navbar -->
 			<div class="navbar bg-base-100">
 				<div class="flex-none">
@@ -18,12 +18,7 @@ import { Menu } from "lucide-vue-next"
 					<a href="/" class="text-3xl btn btn-ghost">
 						PAINTER
 					</a>
-					<span>Placeholder for funny sentences that makes no sense</span>
-				</div>
-				<div class="flex-none">
-					<button class="btn btn-square btn-ghost">
-						<Menu />
-					</button>
+					<span class="hidden md:inline-block">Placeholder for funny sentences that makes no sense</span>
 				</div>
 			</div>
 			<!-- navbarend -->

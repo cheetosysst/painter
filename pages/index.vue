@@ -1,20 +1,15 @@
 <script setup lang="ts">
+import { ArrowRight } from "lucide-vue-next";
 const route = useRoute();
 
-const count = ref<number>(1);
+const codeContent = ref<string>("");
 
-
-definePageMeta({
-	layout: "default"
-});
 </script>
 
 <template>
-	<div>
-		<h1>Nuxt Routing set up successfully!</h1>
-		<p>Current route: {{ route.path }}</p>
-		<span>{{ count }}</span>
-		<button type="button" @click="count = count + 1">click</button>
-
+	<div class="h-[40dvh] p-4 flex gap-2 flex-col">
+		<textarea v-model="codeContent" placeholder="Paste your code here..."
+			className="textarea textarea-bordered w-1/2 resize-none h-full" />
+		<Highlighter :code="codeContent" />
 	</div>
 </template>
