@@ -47,6 +47,8 @@ function themeSelect() {
 						{{ lang }}
 					</option>
 				</select>
+				<button class="btn btn-primary">Primary</button>
+				<button class="btn btn-secondary">Secondary</button>
 			</div>
 			<div class="" v-html="renderedCode" />
 		</div>
