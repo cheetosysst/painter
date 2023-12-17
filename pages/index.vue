@@ -2,6 +2,25 @@
 
 const codeContent = ref<string>("");
 
+function handleTab(payload: KeyboardEvent) {
+	if (payload.key !== "Tab") return;
+	payload.preventDefault();
+
+	const textarea = payload.target as HTMLTextAreaElement;
+
+	const selectionStart: number = textarea.selectionStart;
+	const selectionEnd: number = textarea.selectionEnd;
+
+	console.log({ selectionStart, selectionEnd });
+	const textBeforeCursor = textarea.value.substring(0, selectionStart);
+	const textAfterCursor = textarea.value.substring(selectionEnd);
+
+	textarea.value = textBeforeCursor + '\t' + textAfterCursor;
+
+	textarea.selectionStart = textarea.selectionEnd = selectionStart + 1;
+
+}
+
 </script>
 
 <template>
@@ -11,10 +30,11 @@ const codeContent = ref<string>("");
 				<h2 class="text-3xl font-semibold">
 					Source Code
 				</h2>
-				<textarea spellcheck="false" v-model="codeContent" placeholder="Paste your code here..."
+				<textarea spellcheck="false" v-model="codeContent" @keydown="handleTab"
+					placeholder="Paste your code here..."
 					class="textarea textarea-bordered overflow-hidden flex-grow outline-none" />
 			</div>
 		</div>
-		<Highlighter :code="codeContent" class="min-h-[50dvh]" />
+		<Highlighter :code="codeContent" class="min-h-[45dvh]" />
 	</div>
 </template>
