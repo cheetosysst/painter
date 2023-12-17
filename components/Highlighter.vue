@@ -18,11 +18,20 @@ const selectedTheme: Ref<keyof typeof bundledThemes> = ref("material-theme-darke
 const selectedLang: Ref<keyof typeof bundledLanguagesBase> = ref("javascript");
 
 const renderedCode = computed(() => {
-	return highlighter.codeToHtml(props.code || "", {
+	return highlighter.codeToHtml("\n" + props.code || "", {
 		lang: selectedLang.value as string,
 		theme: selectedTheme.value
 	});
 });
+
+function copyRichText(payload: Event) {
+	const element = document.querySelector("div#codeResult")!;
+
+	const blob = new Blob([element.innerHTML], { type: "text/html" });
+	const data = [new ClipboardItem({ ["text/html"]: blob })];
+
+	navigator.clipboard.write(data);
+}
 </script>
 
 <script lang="ts">
@@ -43,10 +52,11 @@ const renderedCode = computed(() => {
 						{{ lang }}
 					</option>
 				</select>
-				<button class="btn btn-primary">Primary</button>
-				<button class="btn btn-secondary">Secondary</button>
+				<button class="btn btn-primary" v-on:click="copyRichText">Copy Rich Text</button>
+				<button class="btn btn-info">Copy Image</button>
+				<button class="btn btn-warning">Save Image</button>
 			</div>
-			<div class="" v-html="renderedCode" />
+			<div class="" id="codeResult" v-html="renderedCode" />
 		</div>
 	</div>
 </template>
