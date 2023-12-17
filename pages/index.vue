@@ -11,7 +11,6 @@ function handleTab(payload: KeyboardEvent) {
 	const selectionStart: number = textarea.selectionStart;
 	const selectionEnd: number = textarea.selectionEnd;
 
-	console.log({ selectionStart, selectionEnd });
 	const textBeforeCursor = textarea.value.substring(0, selectionStart);
 	const textAfterCursor = textarea.value.substring(selectionEnd);
 

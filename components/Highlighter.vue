@@ -23,10 +23,6 @@ const renderedCode = computed(() => {
 		theme: selectedTheme.value
 	});
 });
-
-function themeSelect() {
-	console.log(selectedTheme.value);
-}
 </script>
 
 <script lang="ts">
@@ -37,12 +33,12 @@ function themeSelect() {
 	<div class="card card-compact bg-base-200 shadow-sm">
 		<div class="card-body">
 			<div class="flex gap-4">
-				<select class="select select-bordered w-48" v-model="selectedTheme" v-on:change="themeSelect">
+				<select class="select select-bordered w-48" v-model="selectedTheme">
 					<option v-for="(theme, idx) in availableThemes">
 						{{ theme }}
 					</option>
 				</select>
-				<select class="select select-bordered w-48" v-model="selectedLang" v-on:change="themeSelect">
+				<select class="select select-bordered w-48" v-model="selectedLang">
 					<option v-for="(lang, idx) in availableLanguages">
 						{{ lang }}
 					</option>
