@@ -62,7 +62,7 @@ const themes = [
 							<ChevronDown />
 						</div>
 						<ul tabindex="0"
-							class="dropdown-content h-96 overflow-y-scroll z-[1] p-2 shadow-2xl odd:btn-accent bg-base-300 rounded-box w-fit">
+							class="dropdown-content h-96 overflow-y-scroll z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-fit">
 							<li v-for="theme in themes"><input type="radio" name="theme-dropdown"
 									class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
 									:aria-label="theme" :value="theme" /></li>

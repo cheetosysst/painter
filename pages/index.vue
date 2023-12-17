@@ -23,7 +23,7 @@ function handleTab(payload: KeyboardEvent) {
 </script>
 
 <template>
-	<div class="p-4 flex gap-8 min-h-[93dvh] flex-col">
+	<div class="flex w-full p-4 gap-8 min-h-[93dvh] flex-col">
 		<div class="card bg-base-200 h-[40dvh] shadow-sm">
 			<div class="card-body flex flex-col">
 				<h2 class="text-3xl font-semibold">

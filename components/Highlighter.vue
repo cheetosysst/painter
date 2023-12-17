@@ -51,8 +51,6 @@ function saveImage() {
 	return domtoimage.toBlob(element).then((rawData) => {
 		const type = "image/png";
 		const blob = new Blob([rawData], { type });
-		// const file = new File([blob], `painter-${new Date().toISOString()}.png`, { type });
-
 		const blobURL = URL.createObjectURL(blob);
 
 		const download = document.createElement("a");
@@ -75,20 +73,26 @@ function saveImage() {
 <template>
 	<div class="card card-compact bg-base-200 shadow-sm">
 		<div class="card-body">
-			<div class="flex gap-4">
-				<select class="select select-bordered w-48" v-model="selectedTheme">
+			<div class="flex gap-4 flex-wrap items-center">
+				<select class="select select-bordered w-40" v-model="selectedTheme">
 					<option v-for="(theme, idx) in availableThemes">
 						{{ theme }}
 					</option>
 				</select>
-				<select class="select select-bordered w-48" v-model="selectedLang">
+				<select class="select select-bordered w-40" v-model="selectedLang">
 					<option v-for="(lang, idx) in availableLanguages">
 						{{ lang }}
 					</option>
 				</select>
-				<button class="btn btn-primary" v-on:click="copyRichText">Copy Rich Text</button>
-				<button class="btn btn-info" v-on:click="copyImage">Copy Image</button>
-				<button class="btn btn-warning" v-on:click="saveImage">Save Image</button>
+				<div class="flex gap-4 flex-wrap">
+
+					<button class="btn transition-all btn-primary" v-on:click="copyRichText">Copy
+						Rich Text</button>
+					<button class="btn transition-all btn-info" v-on:click="copyImage">Copy
+						Image</button>
+					<button class="btn transition-all btn-warning" v-on:click="saveImage">Save
+						Image</button>
+				</div>
 			</div>
 			<div class="" id="codeResult" v-html="renderedCode" />
 		</div>
