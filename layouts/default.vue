@@ -1,5 +1,40 @@
 <script setup lang="ts">
-import { Menu } from "lucide-vue-next"
+import { Menu, ChevronDown } from "lucide-vue-next";
+
+const themes = [
+	"light",
+	"dark",
+	"cupcake",
+	"bumblebee",
+	"emerald",
+	"corporate",
+	"synthwave",
+	"retro",
+	"cyberpunk",
+	"valentine",
+	"halloween",
+	"garden",
+	"forest",
+	"aqua",
+	"lofi",
+	"pastel",
+	"fantasy",
+	"wireframe",
+	"black",
+	"luxury",
+	"dracula",
+	"cmyk",
+	"autumn",
+	"business",
+	"acid",
+	"lemonade",
+	"night",
+	"coffee",
+	"winter",
+	"dim",
+	"nord",
+	"sunset",
+]
 
 </script>
 
@@ -19,6 +54,22 @@ import { Menu } from "lucide-vue-next"
 						PAINTER
 					</a>
 					<span class="hidden md:inline-block">Placeholder for funny sentences that makes no sense</span>
+				</div>
+				<div class="flex-none items-baseline">
+					<div class="dropdown dropdown-end">
+						<div tabindex="0" role="button" class="btn flex gap-2 items-center font-normal m-1">
+							Theme
+							<ChevronDown />
+						</div>
+						<ul tabindex="0"
+							class="dropdown-content h-96 overflow-y-scroll z-[1] p-2 shadow-2xl odd:btn-accent bg-base-300 rounded-box w-fit">
+							<li v-for="theme in themes"><input type="radio" name="theme-dropdown"
+									class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+									:aria-label="theme" :value="theme" /></li>
+
+
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!-- navbarend -->
