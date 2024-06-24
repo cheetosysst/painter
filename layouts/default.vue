@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { Menu, ChevronDown } from "lucide-vue-next";
 
 useHead({
 	htmlAttrs: {
-		lang: "zh-TW"
-	}
+		lang: "zh-TW",
+	},
 });
 
 useSeoMeta({
@@ -16,7 +17,7 @@ useSeoMeta({
 
 	ogType: "website",
 	ogDeterminer: "the",
-	ogSiteName: "Painter"
+	ogSiteName: "Painter",
 });
 
 const themes = [
@@ -52,55 +53,87 @@ const themes = [
 	"dim",
 	"nord",
 	"sunset",
-]
+];
 
+function updateTheme() {
+	console.log("transition");
+}
+
+function startTransition(target: string) {
+	console.log("flag", target);
+	if (typeof document === "undefined") return;
+	if (document.startViewTransition == null) return;
+	document.startViewTransition(updateTheme);
+}
+
+onMounted(() => {
+	startTransition("business");
+});
 </script>
 
 <template>
 	<div class="drawer">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
-		<div class="drawer-content min-h-[100dvh] h-fit flex flex-col">
+		<div class="drawer-content min-h-dvh h-fit flex flex-col">
 			<!-- navbar -->
-			<div class="navbar h-[6dvh] bg-base-100">
+			<div class="navbar h-[6dvh]">
 				<div class="flex-none">
-					<label for="my-drawer" class="btn btn-square btn-ghost drawer-button">
-						<Menu />
+					<label
+						for="my-drawer"
+						class="btn btn-square btn-ghost drawer-button"
+					>
+						<Menu></Menu>
 					</label>
 				</div>
 				<div class="flex-1 flex gap-2 items-baseline">
-					<a href="/" class="text-3xl btn btn-ghost">
-						PAINTER
-					</a>
-					<span class="hidden md:inline-block">Placeholder for funny sentences that makes no sense</span>
+					<a href="/" class="text-3xl btn btn-ghost"> PAINTER </a>
+					<span class="hidden md:inline-block">
+						Placeholder for funny sentences that makes no sense
+					</span>
 				</div>
 				<div class="flex-none items-baseline">
 					<div class="dropdown dropdown-end">
-						<div tabindex="0" role="button" class="btn flex gap-2 items-center font-normal m-1">
+						<div
+							tabindex="0"
+							role="button"
+							class="btn flex gap-2 items-center font-normal m-1"
+						>
 							Theme
 							<ChevronDown />
 						</div>
-						<ul tabindex="0"
-							class="dropdown-content h-96 overflow-y-scroll z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-fit">
-							<li v-for="theme in themes"><input type="radio" name="theme-dropdown"
+						<ul
+							tabindex="0"
+							class="dropdown-content h-96 overflow-y-scroll z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-fit"
+						>
+							<li v-for="theme in themes" :key="theme">
+								<input
+									type="radio"
+									name="theme-dropdown"
 									class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-									:aria-label="theme" :value="theme" /></li>
-
-
+									:aria-label="theme"
+									:value="theme"
+									@click="() => startTransition(theme)"
+								/>
+							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<!-- navbarend -->
 
-			<slot />
-
+			<slot></slot>
 		</div>
 		<div class="drawer-side">
-			<label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+			<label
+				for="my-drawer"
+				aria-label="close sidebar"
+				class="drawer-overlay"
+			></label>
 			<ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-				<li><a href="https://github.com/cheetosysst/painter">Github</a></li>
+				<li>
+					<a href="https://github.com/cheetosysst/painter">Github</a>
+				</li>
 				<li><a href="/about">About</a></li>
-
 			</ul>
 		</div>
 	</div>

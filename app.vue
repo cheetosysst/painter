@@ -1,9 +1,4 @@
-<script setup>
-import { themeChange } from "theme-change";
-onMounted(() => {
-	themeChange(false);
-});
-</script>
+<script setup></script>
 
 <template>
 	<NuxtLayout>
