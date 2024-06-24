@@ -97,7 +97,7 @@ function copyImage() {
 
 			navigator.clipboard.write(data);
 		})
-		.catch((error) => console.log(error));
+		.catch((error) => console.error(error));
 }
 
 function saveImage() {
@@ -117,7 +117,7 @@ function saveImage() {
 
 			URL.revokeObjectURL(blobURL);
 		})
-		.catch((error) => console.log(error));
+		.catch((error) => console.error(error));
 }
 </script>
 

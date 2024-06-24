@@ -55,15 +55,10 @@ const themes = [
 	"sunset",
 ];
 
-function updateTheme() {
-	console.log("transition");
-}
-
 function startTransition(target: string) {
-	console.log("flag", target);
 	if (typeof document === "undefined") return;
 	if (document.startViewTransition == null) return;
-	document.startViewTransition(updateTheme);
+	document.startViewTransition(() => {});
 }
 
 onMounted(() => {
